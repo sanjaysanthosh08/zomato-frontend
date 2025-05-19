@@ -1,0 +1,18 @@
+<div class="food-page">
+  <h2>{{ restaurantName }} - Food Items</h2>
+
+  <div class="food-list">
+    <div class="food-card" *ngFor="let item of foodItems">
+      <img [src]="item.imageUrl" alt="{{ item.name }}" class="food-image" />
+      <h3>{{ item.name }}</h3>
+      <p>₹ {{ item.price }}</p>
+      <div class="quantity-control">
+        <button (click)="decrease(item)">–</button>
+        <span>{{ item.quantity }}</span>
+        <button (click)="increase(item)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="place-order-btn" (click)="placeOrder()">Add to Cart</button>
+</div>

@@ -1,0 +1,11 @@
+<div class="restaurant-page">
+  <h2 class="page-title">Restaurants and Items</h2>
+
+  <div class="restaurant-container">
+    <div class="restaurant-card" *ngFor="let item of restaurantItems">
+      <img [src]="item.image" [alt]="item.name" />
+      <h3>{{ item.name }}</h3>
+      <button (click)="orderItem(item.name)">Order</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+/* Global Styles */
+$primary-color: #ff4d4d;
+$hover-color: #e60000;
+$background-color: #f7f7f7;
+$input-border: #ccc;
+$input-focus-border: #ff4d4d;
+$small-text-color: #d9534f;
+$button-radius: 5px;
+$input-radius: 5px;
+$padding: 10px;
+$font-size-small: 12px;
+$font-size-medium: 14px;
+$max-width: 450px;
+$container-padding: 30px;
+$container-margin: 50px auto;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+/* Container */
+.login-container {
+  max-width: $max-width;
+  margin: $container-margin;
+  padding: $container-padding;
+  background: $background-color;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
+  text-align: center;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+  }
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+
+  label {
+    font-size: $font-size-medium;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    padding: $padding;
+    font-size: $font-size-medium;
+    border: 1px solid $input-border;
+    border-radius: $input-radius;
+    outline: none;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: $input-focus-border;
+      box-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
+    }
+    
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
+  small {
+    display: block;
+    margin-top: 5px;
+    color: $small-text-color;
+    font-size: $font-size-small;
+    font-weight: 400;
+  }
+}
+
+/* Submit Button */
+button {
+  width: 100%;
+  padding: $padding;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $button-radius;
+  font-size: $font-size-medium;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+
+  &:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  input {
+    padding: 8px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 16px;
+  }
+}

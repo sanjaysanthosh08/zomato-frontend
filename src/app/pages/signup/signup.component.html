@@ -1,0 +1,83 @@
+<div class="signup-container">
+  <h2>Create an Account</h2>
+  <form (ngSubmit)="signupUser(signupForm)" #signupForm="ngForm">
+    
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="name"
+        #nameRef="ngModel"
+        required
+        minlength="3"
+        placeholder="Enter your full name"
+      />
+      <small *ngIf="nameRef.errors?.['required']">Name is required.</small>
+      <small *ngIf="nameRef.errors?.['minlength']">Minimum 3 characters required.</small>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        #emailRef="ngModel"
+        required
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        placeholder="Enter your email"
+      />
+      <small *ngIf="emailRef.errors?.['required']">Email is required.</small>
+      <small *ngIf="emailRef.errors?.['pattern']">Enter a valid email address.</small>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        #passwordRef="ngModel"
+        required
+        minlength="6"
+        placeholder="Enter your password"
+      />
+      <small *ngIf="passwordRef.errors?.['required']">Password is required.</small>
+      <small *ngIf="passwordRef.errors?.['minlength']">Minimum 6 characters required.</small>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        [(ngModel)]="confirmPassword"
+        #confirmPasswordRef="ngModel"
+        required
+        placeholder="Confirm your password"
+      />
+      <small *ngIf="confirmPasswordRef.errors?.['required']">Confirm password is required.</small>
+    </div>
+
+    <!-- Password Mismatch Error -->
+    <div *ngIf="password !== confirmPassword" class="password-mismatch">
+      Passwords do not match.
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="!signupForm.valid || password !== confirmPassword">Sign Up</button>
+  </form>
+
+  <div class="alternative-action">
+    <p>Already have an account? <a href="/login">Login here</a></p>
+  </div>
+</div>

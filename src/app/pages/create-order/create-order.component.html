@@ -1,0 +1,44 @@
+<div class="order-page">
+  <h2>🧾 Order Summary</h2>
+
+  <table *ngIf="orderedItems.length > 0; else noItems" class="order-table">
+    <thead>
+      <tr>
+        <th>Food Item</th>
+        <th>Quantity</th>
+        <th>Price (₹)</th>
+        <th>Total (₹)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of orderedItems">
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>₹{{ item.price }}</td>
+        <td>₹{{ item.price * item.quantity }}</td>
+        <td>
+          <button class="action-btn decrease" (click)="decrease(item)">−</button>
+          <button class="action-btn increase" (click)="increase(item)">+</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="total-row">
+        <td colspan="4"><strong>Grand Total</strong></td>
+        <td><strong>₹{{ grandTotal }}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <ng-template #noItems>
+    <p class="no-items">🛒 No items selected.</p>
+  </ng-template>
+
+  <div class="button-group">
+    <button class="btn home-btn" (click)="goHome()">🏠 Home</button>
+    <button class="btn back-btn" (click)="goBack()">🔙 Add More</button>
+    <button class="btn clear-btn" (click)="clearOrder()">🗑 Clear</button>
+    <button class="btn place-btn" (click)="placeOrder()">✅ Place Order</button>
+  </div>
+</div>

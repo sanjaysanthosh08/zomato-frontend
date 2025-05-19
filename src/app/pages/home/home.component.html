@@ -1,0 +1,38 @@
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">Zomato</div>
+  <ul class="nav-links">
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/login">Login</a></li>
+    <li><a routerLink="/signup">Signup</a></li>
+  </ul>
+</nav>
+
+<!-- Welcome Box -->
+<section class="welcome-box">
+  <h1>Welcome to Zomato</h1>
+  <img src="assets/Zomato - Sharon Mudgal.jpg" alt="Delicious food" class="welcome-img" />
+  <p>Enjoy delicious foods and explore top-rated restaurants!</p>
+  <button (click)="goExplore()">Explore Now</button>
+</section>
+
+<!-- Cards Section -->
+<section class="cards">
+  <div class="card" (click)="goTo('restaurent-items')">
+    <h3>Restaurants</h3>
+    <p>Browse our delicious menu</p>
+  </div>
+  <div class="card" (click)="goTo('create-order')">
+    <h3>Your Orders</h3>
+    <p>Track your current and past orders</p>
+  </div>
+  <div class="card" (click)="goTo('food-category')">
+    <h3>Categories</h3>
+    <p>Choose your favorite food category</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Zomato. All rights reserved.</p>
+</footer>
