@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { SignupDTO, LoginDTO } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +11,20 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  signup(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/signup`, data, { responseType: 'text' });
+  signup(data: SignupDTO): Observable<string> {
+    // Expect a plain string message from backend
+    return this.http.post(this.baseUrl + '/signup', data, { responseType: 'text' });
   }
 
-  login(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, data, { responseType: 'text' });
+  login(data: LoginDTO): Observable<string> {
+    // Expect JWT token string from backend
+    return this.http.post(this.baseUrl + '/login', data, { responseType: 'text' }).pipe(
+      tap(token => this.saveToken(token))
+    );
   }
 
   saveToken(token: string): void {
     localStorage.setItem('jwtToken', token);
-    localStorage.setItem('isLoggedIn', 'true');
   }
 
   getToken(): string | null {
@@ -29,7 +33,6 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('jwtToken');
-    localStorage.setItem('isLoggedIn', 'false');
   }
 
   isLoggedIn(): boolean {
